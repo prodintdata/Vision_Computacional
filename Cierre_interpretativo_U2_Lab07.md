@@ -1,0 +1,9 @@
+### Cierre Interpretativo (Lab07)
+
+* **Resultado principal:** El modelo Dense baseline (F1 macro de 0.86) superó ligeramente en rendimiento global al modelo CNN (F1 macro de 0.79) bajo la configuración de 8 épocas, demostrando que arquitecturas sencillas pueden capturar eficazmente patrones globales en datasets de baja resolución.
+* **Evidencia predictiva:** Las métricas de pérdida mostraron una convergencia saludable (descenso sostenido de `loss` y `val_loss`), aunque la CNN requirió un mayor tiempo de cómputo en entrenamiento (~290 segundos frente a los 9 segundos del denso).
+* **Clase más difícil:** La categoría 4 (Abrigos/Coats) concentró la mayor cantidad de errores visuales, seguida de cerca por las clases 3 (Vestidos) y 6 (Camisas), debido a la alta similitud morfológica y superposición de texturas en el tren superior.
+* **Costo comparado:** La CNN redujo drásticamente el número de parámetros entrenables (19,466 frente a 50,890 del Dense), pero incrementó el tiempo de inferencia por imagen (~0.22 ms vs ~0.04 ms) y el tiempo total de entrenamiento.
+* **¿La mejora justifica el costo?:** Bajo los principios de Green AI, dado que el modelo denso requirió muchos menos recursos y obtuvo mejor puntaje en este escenario de 8 épocas, la complejidad adicional de la CNN no se justifica plenamente para este problema específico, siendo el baseline una opción más eficiente en CPU.
+* **Limitación del benchmark:** Fashion-MNIST es un conjunto de datos estrictamente didáctico y de baja resolución ($28\times28$ píxeles), lo que limita la generalización de los modelos a escenarios del mundo real.
+* **Decisión antes de usar otro dominio:** Un buen desempeño en este benchmark no valida el uso del modelo en dominios críticos o de alto riesgo (como imágenes médicas, OCR avanzado o vigilancia industrial), requiriendo un rediseño profundo, validación rigurosa y supervisión humana estricta antes de cualquier despliegue real.
